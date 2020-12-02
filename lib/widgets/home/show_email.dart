@@ -1,7 +1,8 @@
 // lib/widgets/home/show_email.dart
 
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:mycookbook/widgets/tutorial/tutorial.dart';
 
 import '../../helpers/alert_helpers.dart';
 
@@ -44,6 +45,14 @@ class ShowEmail extends StatelessWidget {
                         ],
                       ),
                 Text(FirebaseAuth.instance.currentUser.email),
+                FlatButton(
+                  onPressed: () => Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return TutorialPage();
+                  })),
+                  child: const Text('チュートリアル'),
+                  color: Colors.yellow,
+                ),
               ],
             ),
     );

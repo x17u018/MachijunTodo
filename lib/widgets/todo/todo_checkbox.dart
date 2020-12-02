@@ -1,19 +1,19 @@
-import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class TodoCheckBox extends StatelessWidget {
   TodoCheckBox(this.todoID);
   final String todoID;
 
-  Future<void> _handleCheckBox(bool e) async {
+  Future<void> _handleCheckBox(bool flag) async {
     await FirebaseFirestore.instance
         .collection("users")
         .doc(FirebaseAuth.instance.currentUser.uid)
         .collection("todos")
         .doc(todoID)
         .update({
-      "isDone": e,
+      "isDone": flag,
     });
   }
 
